@@ -19,11 +19,16 @@ class nfs::inria::client {
         ensure => directory
     }
 
+    case $::hostname {
+        /frontend/ : { $opts = 'rw,rsize=32768,wsize=32768,intr,noatime' }
+        default    : { $opts = 'ro,rsize=32768,intr,noatime' }
+    }
+
     mount { '/srv/opennebula-storage':
         ensure  => 'mounted',
         device  => 'bonfire-disk:/srv/opennebula-storage',
         fstype  => 'nfs',
-        options => 'ro,rsize=32768,intr,noatime',
+        options => $opts,
         atboot  => true,
         require => File['/srv/opennebula-storage']
     }

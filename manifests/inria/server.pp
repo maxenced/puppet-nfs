@@ -15,6 +15,10 @@
 class nfs::inria::server {
     include nfs::server
 
+    file { '/srv/opennebula-storage':
+        ensure => directory
+    }
+
     nfs::export { '/srv/opennebula-storage':
         export => {
             '131.254.204.0/25' => 'ro,async,no_root_squash,no_subtree_check',
