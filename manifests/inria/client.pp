@@ -15,7 +15,7 @@
 class nfs::inria::client {
     include nfs
 
-    file { '/srv/opennebula-storage':
+    file { '/srv/':
         ensure => directory
     }
 
@@ -24,7 +24,7 @@ class nfs::inria::client {
         default    : { $opts = 'ro,rsize=32768,intr,noatime' }
     }
 
-    mount { '/srv/cloud':
+    mount { '/srv/':
         ensure  => 'mounted',
         device  => 'bonfire-disk:/srv/opennebula-storage',
         fstype  => 'nfs',
