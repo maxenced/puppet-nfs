@@ -31,12 +31,13 @@
 define nfs::export (
   $ensure = present,
   $export = {},
+  $order  = '10'
 ) {
 
   concat::fragment { "nfs_export_${name}":
     ensure  => $ensure,
     target  => '/etc/exports',
-    order   => '10',
+    order   => $order,
     content => template('nfs/exports.erb'),
   }
 
