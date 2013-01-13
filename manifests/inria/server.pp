@@ -21,8 +21,8 @@ class nfs::inria::server {
 
     nfs::export { '/srv/opennebula-storage':
         export => {
-            '131.254.204.0/25' => 'ro,async,no_root_squash,no_subtree_check',
-            '131.254.204.44'   => 'rw,sync'
+            '131.254.204.0/25' => 'ro,async,rsize=32768,no_root_squash,no_subtree_check',
+            '131.254.204.44'   => 'rw,sync,rsize=32768,wsize=32768'
         }
     }
 }
