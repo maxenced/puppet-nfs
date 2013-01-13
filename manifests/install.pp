@@ -1,5 +1,8 @@
 class nfs::install {
 
-  package { 'nfs-common': ensure => present }
+  case $::operatingsystem {
+      /Debian|Ubuntu/ : { package { 'nfs-common': ensure => present } }
+      /CentOS/ : { package { 'nfs-common': ensure => present } }
+  }
 
 }
