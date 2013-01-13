@@ -15,10 +15,6 @@
 class nfs::inria::client {
     include nfs
 
-    file { '/srv/':
-        ensure => directory
-    }
-
     case $::hostname {
         /frontend/ : { $opts = 'rw,rsize=32768,wsize=32768,intr,noatime' }
         default    : { $opts = 'ro,rsize=32768,intr,noatime' }
