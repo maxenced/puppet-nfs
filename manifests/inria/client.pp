@@ -26,6 +26,5 @@ class nfs::inria::client {
         fstype  => 'nfs',
         options => $opts,
         atboot  => true,
-        require => File['/srv/opennebula-storage']
     }
 }
