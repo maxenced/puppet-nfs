@@ -22,7 +22,7 @@ class nfs::inria::client {
     }
 
     mount { '/srv/':
-        ensure  => 'mounted',
+        ensure  => mounted,
         device  => 'bonfire-disk:/srv/opennebula-storage',
         fstype  => 'nfs',
         options => $opts,
