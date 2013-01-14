@@ -16,8 +16,8 @@ class nfs::inria::client {
     include nfs
 
     case $::hostname {
-        /frontend/ : { $opts = 'rw,rsize=32768,wsize=32768,intr,noatime' }
-        default    : { $opts = 'ro,rsize=32768,intr,noatime' }
+        /frontend/ : { $opts = 'rw,intr,noatime' }
+        default    : { $opts = 'ro,intr,noatime' }
     }
 
     mount { '/srv/':
