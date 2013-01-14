@@ -14,6 +14,7 @@
 #
 class nfs::inria::client {
     include nfs
+    include nfs::inria::idmap
 
     case $::hostname {
         /frontend/ : { $opts = 'rw,intr,noatime' }

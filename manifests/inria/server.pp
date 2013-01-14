@@ -14,6 +14,7 @@
 #
 class nfs::inria::server {
     include nfs::server
+    include nfs::inria::idmap
 
     file { '/srv/opennebula-storage':
         ensure => directory
