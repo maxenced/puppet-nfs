@@ -17,7 +17,7 @@ class nfs::server::debian {
 
   Nfs::Export <| |> ~> Service['nfs-kernel-server']
 
-  package { 'nfs-kernel-server': ensure => present }
+  package { ['nfs-kernel-server', 'nfs-common']: ensure => present }
 
   service { 'nfs-kernel-server':
     ensure     => running,
