@@ -25,4 +25,18 @@ class nfs::inria::server {
             '131.254.204.0/25' => 'ro,async,no_root_squash,no_subtree_check',
         }
     }
+
+    user { 'oneadmin':
+        ensure     => present,
+        uid        => '502',
+        gid        => '502',
+        home       => '/home/oneadmin',
+        shell      => '/bin/false',
+        managehome => true
+    }
+
+    group { 'one':
+        ensure => present,
+        gid    => '502'
+    }
 }
