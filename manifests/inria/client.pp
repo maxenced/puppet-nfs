@@ -21,7 +21,7 @@ class nfs::inria::client {
         ensure  => mounted,
         device  => 'bonfire-disk:/srv/opennebula-storage',
         fstype  => 'nfs',
-        options => 'rw,intr,noatime',
+        options => 'rw,intr,noatime,auto',
         atboot  => true,
     }
 }
