@@ -24,6 +24,7 @@ class nfs::inria::server {
         export => {
             '131.254.204.44'   => 'rw,sync,no_root_squash',
             '131.254.204.0/25' => 'rw,async,no_root_squash,no_subtree_check',
+            '172.31.0.0/16'    => 'rw,async,no_root_squash,no_subtree_check',
         }
     }
 
