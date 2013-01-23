@@ -20,9 +20,21 @@ class nfs::inria::server {
         ensure => directory
     }
 
+    file { '/srv/opennebula-storage-integration':
+        ensure => directory
+    }
+
     nfs::export { '/srv/opennebula-storage':
         export => {
             '131.254.204.44'   => 'rw,sync,no_root_squash',
+            '131.254.204.0/25' => 'rw,async,no_root_squash,no_subtree_check',
+            '172.31.0.0/16'    => 'rw,async,no_root_squash,no_subtree_check',
+        }
+    }
+
+    nfs::export { '/srv/opennebula-storage-integration':
+        export => {
+            '131.254.204.24'   => 'rw,sync,no_root_squash',
             '131.254.204.0/25' => 'rw,async,no_root_squash,no_subtree_check',
             '172.31.0.0/16'    => 'rw,async,no_root_squash,no_subtree_check',
         }
