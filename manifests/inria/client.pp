@@ -17,9 +17,14 @@ class nfs::inria::client {
     include nfs::inria::idmap
 
 
+    $mnt = $::fqdn ? {
+        /integration/ => '/srv/opennebula-storage-integration',
+        default       => '/srv/opennebula-storage'
+    }
+
     mount { '/srv':
         ensure  => mounted,
-        device  => 'bonfire-disk:/srv/opennebula-storage',
+        device  => "bonfire-disk:${mnt}",
         fstype  => 'nfs',
         options => 'rw,intr,noatime,auto',
         atboot  => true,
